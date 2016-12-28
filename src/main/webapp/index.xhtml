@@ -1,0 +1,98 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" />
+	<!--Import jQuery before materialize.js-->
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<!-- Compiled and minified JavaScript -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
+</h:head>
+
+<h:body>
+	<nav class="red">
+		<div class="nav-wrapper">
+			<a href="#" class="brand-logo center">Cube Summation</a>
+		</div>
+	</nav>
+	<div class="row">
+		<div class="col s3" style="overflow: auto; height: 100%">
+			<div class="section">
+				<h5>Cube Summation</h5>
+				<p>You are given a 3-D Matrix in which each block contains 0
+					initially. The first block is defined by the coordinate (1,1,1) and
+					the last block is defined by the coordinate (N,N,N). There are two
+					types of queries.</p>
+				<div class="card-panel red lighten-5">UPDATE x y z W</div>
+				<p>updates the value of block (x,y,z) to W.</p>
+				<div class="card-panel red lighten-5">QUERY x1 y1 z1 x2 y2 z2</div>
+				<p>calculates the sum of the value of blocks whose x coordinate is between x1 and x2 (inclusive), y coordinate between y1 and y2 (inclusive) and z coordinate between z1 and z2 (inclusive).</p>
+			</div>
+			<div class="divider"></div>
+			<div class="section">
+				<h5>Input Format</h5>
+				<p>The first line contains an integer T, the number of
+					test-cases. T testcases follow. For each test case, the first line
+					will contain two integers N and M separated by a single space. N
+					defines the N * N * N matrix. M defines the number of operations.
+					The next M lines will contain either</p>
+				<div class="card-panel red lighten-5">
+					 	<p>1. UPDATE x y z W</p>
+ 						<p>2. QUERY  x1 y1 z1 x2 y2 z2</p>
+				</div>
+			</div>
+			<div class="divider"></div>
+			<div class="section">
+				<h5>Output Format</h5>
+				<p>Print the result for each QUERY.</p>
+			</div>
+			<div class="divider"></div>
+			<div class="section">
+				<h5>Constrains</h5>
+				<div class="card-panel red lighten-5">
+					<p>1 &lt;= T &lt;= 50</p>
+					<p>1 &lt;= N &lt;= 100</p>
+					<p>1 &lt;= M &lt;= 1000</p>
+					<p>1 &lt;= x1 &lt;= x2 &lt;= N</p>
+					<p>1 &lt;= y1 &lt;= y2 &lt;= N</p>
+					<p>1 &lt;= z1 &lt;= z2 &lt;= N</p>
+					<p>1 &lt;= x,y,z &lt;= N</p>
+					<p>-10<sup>9</sup> &lt;= W &lt;= 10<sup>9</sup></p>
+				</div>
+			</div>
+		</div>
+		<div class="col s9">
+			<h:form id="sumForm">
+				<p:growl id="growl" showDetail="true" life="5000" autoUpdate="true"/>
+				<div class="row">
+					<div class="input-field col s6">
+						<h:inputTextarea id="inputTA" value="#{cubeView.input}"
+							styleClass="materialize-textarea" />
+						<label for="inputTA">Input</label>
+					</div>
+					<div class="input-field col s6">
+						<h:inputTextarea id="outputTA" value="#{cubeView.output}"
+							styleClass="materialize-textarea" />
+						<label for="outputTA">Output</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s3">
+						<h:commandLink value="Run" actionListener="#{cubeView.process()}"
+							styleClass="btn btn-large red" />
+						<h:commandLink value="Clear" actionListener="#{cubeView.clear()}"
+							styleClass="btn btn-large red" />
+					</div>
+				</div>
+			</h:form>
+		</div>
+	</div>
+</h:body>
+</html>
